@@ -1,0 +1,44 @@
+FoamFile
+{
+    version     4.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvOptions;
+}
+
+
+porosity
+{
+    type          explicitPorositySource;
+    active        no;
+
+
+    explicitPorositySourceCoeffs
+    {
+        type DarcyForchheimer;
+        selectionMode cellZone;
+        cellZone      	CLOT1;
+
+
+        DarcyForchheimerCoeffs
+        {
+              d    d [0 -2 0 0 0 0 0] (1e14 1e14 1e14);
+              f    f [0 -1 0 0 0 0 0] (0 0 0);
+
+              coordinateSystem
+              {
+
+		type cartesian;
+		origin (0 0 0);
+		coordinateRotation
+		{
+		  type axesRotation;
+                  e1    (1 0 0);
+                  e2    (0 1 0);
+		}
+              }
+        }
+    }
+
+}

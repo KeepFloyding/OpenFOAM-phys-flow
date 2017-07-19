@@ -1,0 +1,36 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  4.0                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     4.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      windkesselProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+// All is listed in SI units, don't add new items that are not outlets
+
+OUTLET_ACA
+{
+  C  2.33E-11;
+  R  4.4668E9;
+  Z  3.3322E8;
+  outIndex 0; // Needed to match the values with those listed in the boundary condition
+}
+
+OUTLET_MCA
+{
+  C  4.66E-11;
+  R  3.0208E9;
+  Z  1.792E8;
+  outIndex  1;
+}
+
+
+// ************************************************************************* //
