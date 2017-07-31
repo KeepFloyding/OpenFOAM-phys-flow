@@ -1,6 +1,5 @@
-my_pimpleFoam.C
+pimpleFoam.C
 WKBCFvPatchScalarField.C
-pulsatileVelocityFvPatchVectorField.C
 
 
 EXE = $(FOAM_USER_APPBIN)/flow_solver_1.1

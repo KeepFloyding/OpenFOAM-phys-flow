@@ -25,40 +25,20 @@ boundaryField
         type            zeroGradient;
     }
 
-    OUTLET_MCA
+    OUTLET_1
     {
         type            WKBC;
 	index		1;
 	value		uniform 0;
     }
 
-    OUTLET_ACA
+    OUTLET_2
     {
 	type		WKBC;
 	index		0;
 	value		uniform 0;
     }
 
-    CLOT_WALL1
-    {
-        type            zeroGradient;
-    }
-
-    CLOT_WALL2
-    {
-        type            zeroGradient;
-    }
-
-    CLOT_WALL3
-    {
-	type		zeroGradient;
-    }
-
-    CLOT_WALL4
-    {
-	type		zeroGradient;
-    }
-    
     WALL
     {
 	type		zeroGradient;

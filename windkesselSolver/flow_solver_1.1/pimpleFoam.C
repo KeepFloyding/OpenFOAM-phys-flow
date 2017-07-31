@@ -41,8 +41,6 @@ Description
 #include "pimpleControl.H"
 #include "fvOptions.H"
 #include "fixedFluxPressureFvPatchScalarField.H"
-#include "pulsatileVelocityFvPatchVectorField.H"
-#define pi 3.141592654
 #include "scalarIOList.H"
 #include "WKFunctions.C"   // Windkessel function file
 #include "WKBCFvPatchScalarField.H"

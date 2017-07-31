@@ -18,17 +18,17 @@ FoamFile
 
 OUTLET_ACA
 {
-  C  2.33E-11;
-  R  4.4668E9;
-  Z  3.3322E8;
+  C  SOME_VALUE;
+  R  SOME_VALUE;
+  Z  SOME_VALUE;
   outIndex 0; // Needed to match the values with those listed in the boundary condition
 }
 
 OUTLET_MCA
 {
-  C  4.66E-11;
-  R  3.0208E9;
-  Z  1.792E8;
+  C  SOME_VALUE;
+  R  SOME_VALUE;
+  Z  SOME_VALUE;
   outIndex  1;
 }
 

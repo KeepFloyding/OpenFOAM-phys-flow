@@ -22,41 +22,18 @@ boundaryField
 {
     INLET
     {
-        type            pulsatileVelocity;
-	n		(0 0 1);
-	y		(1 0 0);
-	maxValue	1;
-        value           uniform (0 0 0);
+        type            fixedValue;
+        value           uniform (0 0 1);
     }
 
-    OUTLET_MCA
+    OUTLET_1
     {
         type            zeroGradient;
     }
 
-    OUTLET_ACA
+    OUTLET_2
     {
 	type		zeroGradient;
-    }
-
-    CLOT_WALL1
-    {
-        type            noSlip;
-    }
-
-    CLOT_WALL2
-    {
-        type            noSlip;
-    }
-
-    CLOT_WALL3
-    {
-	type		noSlip;
-    }
-
-    CLOT_WALL4
-    {
-	type		noSlip;
     }
 
     WALL
