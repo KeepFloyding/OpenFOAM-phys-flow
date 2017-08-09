@@ -35,7 +35,7 @@ mkdir -p $FOAM_DEV
 
 ### Installing
 
-For solvers:
+#### Solvers:
 
 cd $FOAM_DEV
 
