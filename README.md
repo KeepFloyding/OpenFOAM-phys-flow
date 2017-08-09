@@ -19,7 +19,9 @@ This can be downloaded from http://www.openfoam.com/
 
 Alternatively you may be able to load the module with 
 
+```
 module load openfoam/4.0
+```
 
 Set up an openfoam directory if you don't have one with
 
@@ -35,14 +37,14 @@ FOAM_DEV=$PWD
 mkdir -p $FOAM_DEV
 ```
 
-
 ### Installing
 
 #### Solvers:
 
+```
 cd $FOAM_DEV
 
-git clone https://github.com/KeepFloyding/OpenFOAM/tree/master/[SOLVER_NAME]
+git clone https://github.com/KeepFloyding/OpenFOAM/tree/master/solvers/[SOLVER_NAME]
 
 cd [SOLVER_NAME]/[SOLVER_VERSION]
 
@@ -50,12 +52,14 @@ wclean
 
 wmake
 
-// Check if the solver is available
-
 ls $FOAM_USER_APPBIN
+```
 
-For boundary conditions:
+If all compiled correctly then the solver should be come up with the last command
 
+### Boundary conditions:
+
+```
 cd $FOAM_DEV
 
 git clone https://github.com/KeepFloyding/OpenFOAM/tree/master/boundaryConditions
@@ -66,9 +70,9 @@ wclean
 
 wmake libso
 
-// Check if the boundary conditions are available
-
 ls $FOAM_USER_LIBBIN
+```
+Library name should come up
 
 ### Deployment
 
@@ -80,9 +84,9 @@ Create case file similar to sampleCaseFile and launch by typing [SOLVER_NAME]
 
 For boundary conditions:
 Edit the system/controlDict file and add at the end
-
+```
 libs ("[LIB_NAME]");
-
+```
 Implementation can be seen in the case file
 
 
