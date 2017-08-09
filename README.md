@@ -23,6 +23,7 @@ module load openfoam/4.0
 
 Set up an openfoam directory if you don't have one with
 
+```
 mkdir -p $FOAM_RUN
 
 cd $FOAM_RUN
@@ -32,6 +33,8 @@ cd ..
 FOAM_DEV=$PWD
 
 mkdir -p $FOAM_DEV
+```
+
 
 ### Installing
 
