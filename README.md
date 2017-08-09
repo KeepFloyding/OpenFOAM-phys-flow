@@ -57,7 +57,7 @@ ls $FOAM_USER_APPBIN
 
 If all compiled correctly then the solver should be come up with the last command
 
-### Boundary conditions:
+#### Boundary conditions:
 
 ```
 cd $FOAM_DEV
