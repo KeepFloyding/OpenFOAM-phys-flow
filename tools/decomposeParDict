@@ -1,0 +1,56 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  3.0.1                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      decomposeParDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// decomposePar is the utility that is executed
+// reconstructPar performs a reconstruction after the case has been run
+
+numberOfSubdomains 16;
+
+// Method, The user has a choice of four methods of decomposition, specified by the method keyword as described below.
+// Simple geometric decomposition in which the domain is split into pieces by direction
+method          scotch;
+
+
+
+// Entry for simple method decomposition, 
+// n:     number of subdomains in x, y and z
+// delta: cell skew factor
+
+simpleCoeffs
+{
+    n               (2 2 1);
+    delta           0.001;
+}
+
+hierarchicalCoeffs
+{
+    n               (1 1 1);
+    delta           0.001;
+    order           xyz;
+}
+
+manualCoeffs
+{
+    dataFile        "";
+}
+
+distributed     no;
+
+roots           ( );
+
+
+// ************************************************************************* //

@@ -1,0 +1,78 @@
+#!/bin/bash
+#PBS -l walltime=60:00:00
+#PBS -l select=1:ncpus=16:mpiprocs=16:mem=8000mb 
+#PBS -e error		
+#PBS -o output		
+#PBS -m ae
+#PBS -M ap4409@ic.ac.uk
+#PBS -N pitzDaily
+
+#	=============================================
+#	INPUTS
+#	=============================================
+	
+solver_name=pimpleFoam  
+
+
+
+#	=============================================
+#	FOLDER LOCATION AND NAME
+#	=============================================
+
+	CASEFOLDER=${PBS_O_WORKDIR##*/}
+	CASELOCATION="$(dirname "$PBS_O_WORKDIR")"
+	echo -e "\n\nCASE NAME     : $CASEFOLDER"
+	echo -e "CASE LOCATION : $CASELOCATION"
+
+#	=============================================
+#	LOAD OPENFOAM MODULE
+#	=============================================
+
+	module load openfoam/4.0
+
+#	=============================================
+#	COPYING CASE FILE INTO TEMP FOLDER
+#	=============================================
+
+#	CD TO TMPDIR
+	cd $TMPDIR
+
+#	COPY FILES TO ALL NODE $TMPDIR
+	pbsdsh2 cp -rf $CASELOCATION/$CASEFOLDER/* "$TMPDIR"
+
+#	=============================================
+#	RUN OPENFOAM
+#	=============================================
+
+# 	EXECUTE IHFOAM (GRACE - TERMINAL 120MIN BEFORE WALL TIME REACHED)
+	pbsexec -grace 150 mpiexec $solver_name -parallel > run.log 2>&1
+
+#	=============================================
+#	RECONSTRUCT
+#	=============================================
+
+# 	SYNC ALL RESULT TO HEAD NODE
+	sync2master
+
+#	RECONSTRUCT
+	reconstructPar > reconstructPar.log 2>&1
+	ret=$?
+
+#	DELETE PROCESSOR DIRECTORY
+	if [ $ret -eq 0 ] ; then
+		  for i in processor* ; do rm -rf $i & done
+		  wait 
+	fi
+
+#	=============================================
+#	COPY RESULTS TO $WORK
+#	=============================================
+
+#	REMOVE EXISTING DIRECTORY
+	rm -rf $WORK/$CASEFOLDER
+
+#	CREATE NEW DIRECTORY
+	mkdir $WORK/$CASEFOLDER
+
+# 	COPY RESULT TO WORK FOLDER
+	cp -rf $TMPDIR/* $WORK/$CASEFOLDER
