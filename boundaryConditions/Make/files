@@ -1,0 +1,3 @@
+parabolicVelocity/parabolicVelocityFvPatchVectorField.C
+
+LIB = $(FOAM_USER_LIBBIN)/openfoamExt_BCs
