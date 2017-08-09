@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# ===============================
+# CHECKMESH
+# ===============================
+echo "Checking mesh ..."
+checkMesh | tee log/log.checkMesh 2>&1
+
+# ===============================
+# SET FIELDS
+# ===============================
+
+# setFields | tee log/log.setFields 2>&1
+
+
+# ===============================
+# DECOMPOSE DOMAIN
+# ===============================
+echo "Decompose domain ..."	
+
+decomposePar -force | tee  log.decomposePar 2>&1
+
+# ===============================
+# RENUMBER DOMAIN
+# ===============================
+
+
+
